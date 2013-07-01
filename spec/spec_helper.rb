@@ -36,3 +36,8 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+# To include turnip steps
+Dir[Rails.root.join("spec/features/step_definitions/**/*.rb")].each {|f| require f}
+include B2Steps
+

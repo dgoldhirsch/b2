@@ -5,7 +5,11 @@ describe Engagement do
 
   describe "#valid_end_date" do
     context "Having nil end_date but being otherwise valid" do
-      let!(:engagement) { engagement_without_end }
+      let!(:engagement) do
+        # Take explicit action, to avoid any FactoryGirl default for end_date
+        FactoryGirl.build(:engagement).tap { |e| end_date = nil }
+      end
+      
       it { expects(engagement).to be_valid }
     end
 
@@ -31,17 +35,9 @@ describe Engagement do
   
 private
 
-  # Warning: probably won't do what you expect if you rely on nil end-date.
-  # What it will do is allow FactoryGirl to apply whatever its default for
-  # end-date is.  If you want a truly nil end-date, call #engagement_without_end_date.
   def engagement_lasting(integer)
     result = FactoryGirl.build(:engagement)
     result.end_date = result.start_date + integer
     result
-  end
-
-  def engagement_without_end
-    # Take explicit action, to avoid any FactoryGirl default for end_date
-    FactoryGirl.build(:engagement).tap { |e| end_date = nil }
   end
 end
