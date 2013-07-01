@@ -12,12 +12,13 @@ gem 'json'
 gem 'cocoon' # https://github.com/nathanvda/cocoon
 
 group :development, :test do
-  gem 'factory_girl_rails'
+  gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
 end
 
 group :test do
+  gem 'factory_girl_rails'
   gem 'turnip'
   gem 'fuubar'
 end

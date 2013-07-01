@@ -35,6 +35,8 @@ B2::Application.routes.draw do
     resources :engagements
   end
   
+  root to: 'customers#index' # server:3000 => customers
+  
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
