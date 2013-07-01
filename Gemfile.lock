@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    cocoon (1.1.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -48,6 +49,10 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    fuubar (1.1.0)
+      rspec (~> 2.0)
+      rspec-instafail (~> 0.2.0)
+      ruby-progressbar (~> 1.0.0)
     gherkin (2.12.0)
       multi_json (~> 1.3)
     hike (1.2.2)
@@ -96,6 +101,7 @@ GEM
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
+    rspec-instafail (0.2.4)
     rspec-mocks (2.13.1)
     rspec-rails (2.13.2)
       actionpack (>= 3.0)
@@ -104,6 +110,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-progressbar (1.0.2)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -131,8 +138,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cocoon
   coffee-rails
   debugger
+  fuubar
   jquery-rails
   json
   pg

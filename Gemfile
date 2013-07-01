@@ -8,12 +8,15 @@ gem 'rails'
 
 gem 'pg'
 gem 'json'
+gem 'cocoon' # https://github.com/nathanvda/cocoon
+
 group :development, :test do
   gem 'rspec-rails'
 end
 
 group :test do
   gem 'turnip'
+  gem 'fuubar'
 end
 
 # Gems used only for assets and not required

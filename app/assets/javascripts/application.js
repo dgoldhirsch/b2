@@ -13,3 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+// https://github.com/nathanvda/cocoon
+//= require cocoon
