@@ -1,0 +1,13 @@
+= form_for @engagement do |f|
+  - if @engagement.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@engagement.errors.count, "error")} prohibited this engagement from being saved:"
+      %ul
+        - @engagement.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

@@ -6,6 +6,7 @@ gem 'rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'haml-rails'
 gem 'pg'
 gem 'json'
 gem 'cocoon' # https://github.com/nathanvda/cocoon

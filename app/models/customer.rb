@@ -1,5 +1,5 @@
 class Customer < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :engagements_attributes
 
   has_many :engagements, dependent: :destroy
   

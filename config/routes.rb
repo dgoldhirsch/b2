@@ -31,6 +31,10 @@ B2::Application.routes.draw do
   #     resource :seller
   #   end
 
+  resources :customers do
+    resources :engagements
+  end
+  
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments

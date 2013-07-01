@@ -1,0 +1,9 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @engagement.name
+
+= link_to 'Edit', edit_engagement_path(@engagement)
+\|
+= link_to 'Back', engagements_path

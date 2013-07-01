@@ -1,0 +1,19 @@
+%h1 Listing engagements
+
+%table
+  %tr
+    %th Name
+    %th
+    %th
+    %th
+
+  - @engagements.each do |engagement|
+    %tr
+      %td= engagement.name
+      %td= link_to 'Show', engagement
+      %td= link_to 'Edit', edit_engagement_path(engagement)
+      %td= link_to 'Destroy', engagement, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New engagement', new_engagement_path
