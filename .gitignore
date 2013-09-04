@@ -16,3 +16,6 @@
 
 # Ignore
 /config/database.yml
+
+# RubyMine stuff--note use of ** so that works even if .idea is a symbolic link
+/.idea/**
