@@ -33,6 +33,8 @@ B2::Application.routes.draw do
   #     resource :seller
   #   end
 
+  resources :users
+  
   resources :customers do
     resources :engagements
   end
