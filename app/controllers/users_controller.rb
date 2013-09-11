@@ -1,13 +1,28 @@
 class UsersController < ApplicationController
 
+  # DELETE /users/1
+  # DELETE /users/1.json
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to users_url }
+      format.json { head :no_content }
+    end
+  end
+
+  # GET /users/1/edit
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  # GET /users
   def index
     @users = User.all
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-  
+  # GET /users/1
   def show
     @user = User.find(params[:id])
   end
