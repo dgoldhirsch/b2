@@ -33,12 +33,10 @@ B2::Application.routes.draw do
   #     resource :seller
   #   end
 
-  resources :users
-  
-  resources :customers do
-    resources :engagements
+  resources :users do
+    resources :customers
   end
-  
+
   root to: 'customers#index' # server:3000 => customers
   
   # Sample resource route with more complex sub-resources

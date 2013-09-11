@@ -10,12 +10,12 @@
     = f.label :name
     = f.text_field :name
 
-  %h3 Engagements
-  #engagements
-    = f.fields_for :engagements do |engagement|
-      = render 'engagement_fields', f: engagement
+  %h3 Timesheets
+  #timesheets
+    = f.fields_for :timesheets do |engagement|
+      = render 'timesheet_fields', f: engagement
     .links
-      = link_to_add_association 'add_engagement', f, :engagements
+      = link_to_add_association 'add_timesheet', f, :timesheets
 
   .actions
     = f.submit 'Save'

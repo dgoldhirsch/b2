@@ -1,7 +1,8 @@
 class Customer < ActiveRecord::Base
-  attr_accessible :name, :engagements_attributes
+  attr_accessible :name
+  belongs_to :user
 
-  has_many :engagements, dependent: :destroy
+#  has_many :timesheets, dependent: :destroy
   
-  accepts_nested_attributes_for :engagements, :reject_if => :all_blank, :allow_destroy => true
+#  accepts_nested_attributes_for :timesheets, :reject_if => :all_blank, :allow_destroy => true
 end
