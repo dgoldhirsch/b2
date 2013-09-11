@@ -1,8 +1,10 @@
+# This controls a nested resource, because every Customer belongs to a User.
+# The current user can see only his customers.
 class CustomersController < ApplicationController
   before_filter :get_user
 
-  # GET /users/1/customers
-  # GET /users/1/customers.json
+  # GET /customers
+  # GET /customers.json
   def index
     @customers = @user.customers.all
 
@@ -12,8 +14,8 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /users/1/customers/1
-  # GET /users/1/customers/1.json
+  # GET /customers/1
+  # GET /customers/1.json
   def show
     @customer = @user.customers.find(params[:id])
 
@@ -23,8 +25,8 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /user/1/customers/new
-  # GET /user/1/customers/new.json
+  # GET /customers/new
+  # GET /customers/new.json
   def new
     @customer = @user.customers.new
 
@@ -34,13 +36,13 @@ class CustomersController < ApplicationController
     end
   end
 
-  # GET /users/1/customers/1/edit
+  # GET /customers/1/edit
   def edit
     @customer = @user.customers.find(params[:id])
   end
 
-  # POST /users/1/customers
-  # POST /users/1/customers.json
+  # POST /customers
+  # POST /customers.json
   def create
     @customer = @user.customers.new(params[:customer])
 
@@ -55,8 +57,8 @@ class CustomersController < ApplicationController
     end
   end
 
-  # PUT /users/1/customers/1
-  # PUT /users/1/customers/1.json
+  # PUT /customers/1
+  # PUT /customers/1.json
   def update
     @customer = @user.customers.find(params[:id])
 
@@ -71,8 +73,8 @@ class CustomersController < ApplicationController
     end
   end
 
-  # DELETE /users/1/customers/1
-  # DELETE /users/1/customers/1.json
+  # DELETE /customers/1
+  # DELETE /customers/1.json
   def destroy
     @customer = @user.customers.find(params[:id])
     @customer.destroy
