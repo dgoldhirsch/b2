@@ -11,6 +11,7 @@ gem 'pg'
 gem 'json'
 gem 'cocoon' # https://github.com/nathanvda/cocoon
 gem 'devise'
+gem 'cancan'
 
 group :development, :test do
   gem 'faker'
