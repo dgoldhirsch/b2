@@ -68,7 +68,7 @@ class CustomersController < ApplicationController
     @customer.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_customers_url(@user) }
+      format.html { redirect_to customers_url }
       format.json { head :no_content }
     end
   end

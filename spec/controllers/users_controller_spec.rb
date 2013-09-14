@@ -1,11 +1,8 @@
 require 'spec_helper'
+require 'b2_controller_spec_helper'
 
 describe UsersController do
   let!(:user) { FactoryGirl.create(:user) }
-
-  shared_examples_for "redirects to sign in" do
-    it { expects(response).to redirect_to(new_user_session_path) }
-  end
 
   describe "DELETE destroy" do
     context "Signed in as super-user" do
