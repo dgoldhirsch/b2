@@ -12,6 +12,7 @@ gem 'json'
 gem 'cocoon' # https://github.com/nathanvda/cocoon
 gem 'devise'
 gem 'cancan'
+gem 'redcarpet' #https://github.com/vmg/redcarpet
 
 group :development, :test do
   gem 'faker'
