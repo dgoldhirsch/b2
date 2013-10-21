@@ -64,5 +64,8 @@ RSpec.configure do |config|
 end
 
 # To include turnip steps
-Dir[Rails.root.join("spec/features/step_definitions/**/*.rb")].each {|f| require f}
-include B2Steps
+Dir[Rails.root.join("spec/features/step_definitions/**/*.rb")].each do |f|
+  require f
+  the_module = File.basename(f, '.rb').camelize.constantize
+  self.class.send(:include, the_module)
+end
