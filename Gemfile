@@ -13,6 +13,7 @@ gem 'cocoon' # https://github.com/nathanvda/cocoon
 gem 'devise'
 gem 'cancan'
 gem 'redcarpet' #https://github.com/vmg/redcarpet
+gem 'protected_attributes' # hold-over from Rails 3
 
 group :development, :test do
   gem 'faker'
