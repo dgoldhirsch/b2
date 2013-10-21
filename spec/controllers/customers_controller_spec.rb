@@ -21,92 +21,6 @@ describe CustomersController do
     result
   end
 
-  describe "DELETE destroy" do
-    context "Signed in as super-user" do
-      before { sign_in(superuser) }
-      let!(:response) { delete :destroy, id: customer1.id }
-
-      it "finds the right customer" do
-        expect(assigns(:customer)).to eq(customer1)
-      end
-
-      it "allows deletion of anyone's customers" do
-        expects(response).to redirect_to(customers_path)
-      end
-    end
-
-    context "Signed in as user" do
-      before { sign_in(user1) }
-
-      context "Trying to delete his customer" do
-        let!(:response) { delete :destroy, id: customer1.id }
-
-        it "finds the right customer" do
-          expect(assigns(:customer)).to eq(customer1)
-        end
-
-        it "allows deletion" do
-          expects(response).to redirect_to(customers_path)
-        end
-      end
-
-      context "Trying to delete someone else's customer" do
-        let!(:response) { delete :destroy, id: customer2.id }
-        it_behaves_like "unauthorized"
-      end
-    end
-
-    context "Not signed in" do
-      let!(:response) { delete :destroy, id: superuser.id }
-      it_behaves_like "redirects to sign in"
-    end
-  end
-
-  describe "GET edit" do
-    context "Signed in as super-user" do
-      before { sign_in(superuser) }
-      let!(:response) { get :edit, id: customer1.id }
-
-      it { expects(response).to be_success }
-
-      it "finds the right customer" do
-        expect(assigns(:customer)).to eq(customer1)
-      end
-
-      it "renders view" do
-        expect(response).to render_template("edit")
-      end
-    end
-
-    context "Signed in as user" do
-      before { sign_in(user1) }
-
-      context "Trying to edit his customer" do
-        let!(:response) { get :edit, id: customer1.id }
-
-        it { expects(response).to be_success }
-
-        it "finds the right customer" do
-          expect(assigns(:customer)).to eq(customer1)
-        end
-
-        it "allows deletion" do
-          expects(response).to render_template("edit")
-        end
-      end
-
-      context "Trying to edit someone else's customer" do
-        let!(:response) { get :edit, id: customer2.id }
-        it_behaves_like "unauthorized"
-      end
-    end
-
-    context "Not signed in" do
-      let!(:response) { get :edit, id: customer1.id }
-      it_behaves_like "redirects to sign in"
-    end
-  end
-
   describe "GET index" do
     context "Signed in as super-user" do
       before { sign_in(superuser) }
@@ -185,6 +99,92 @@ describe CustomersController do
 
     context "Not signed in" do
       let!(:response) { get :show, id: customer2.id }
+      it_behaves_like "redirects to sign in"
+    end
+  end
+
+  describe "GET edit" do
+    context "Signed in as super-user" do
+      before { sign_in(superuser) }
+      let!(:response) { get :edit, id: customer1.id }
+
+      it { expects(response).to be_success }
+
+      it "finds the right customer" do
+        expect(assigns(:customer)).to eq(customer1)
+      end
+
+      it "renders view" do
+        expect(response).to render_template("edit")
+      end
+    end
+
+    context "Signed in as user" do
+      before { sign_in(user1) }
+
+      context "Trying to edit his customer" do
+        let!(:response) { get :edit, id: customer1.id }
+
+        it { expects(response).to be_success }
+
+        it "finds the right customer" do
+          expect(assigns(:customer)).to eq(customer1)
+        end
+
+        it "allows deletion" do
+          expects(response).to render_template("edit")
+        end
+      end
+
+      context "Trying to edit someone else's customer" do
+        let!(:response) { get :edit, id: customer2.id }
+        it_behaves_like "unauthorized"
+      end
+    end
+
+    context "Not signed in" do
+      let!(:response) { get :edit, id: customer1.id }
+      it_behaves_like "redirects to sign in"
+    end
+  end
+
+  describe "DELETE destroy" do
+    context "Signed in as super-user" do
+      before { sign_in(superuser) }
+      let!(:response) { delete :destroy, id: customer1.id }
+
+      it "finds the right customer" do
+        expect(assigns(:customer)).to eq(customer1)
+      end
+
+      it "allows deletion of anyone's customers" do
+        expects(response).to redirect_to(customers_path)
+      end
+    end
+
+    context "Signed in as user" do
+      before { sign_in(user1) }
+
+      context "Trying to delete his customer" do
+        let!(:response) { delete :destroy, id: customer1.id }
+
+        it "finds the right customer" do
+          expect(assigns(:customer)).to eq(customer1)
+        end
+
+        it "allows deletion" do
+          expects(response).to redirect_to(customers_path)
+        end
+      end
+
+      context "Trying to delete someone else's customer" do
+        let!(:response) { delete :destroy, id: customer2.id }
+        it_behaves_like "unauthorized"
+      end
+    end
+
+    context "Not signed in" do
+      let!(:response) { delete :destroy, id: superuser.id }
       it_behaves_like "redirects to sign in"
     end
   end
