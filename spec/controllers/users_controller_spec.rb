@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'b2_controller_spec_helper'
 
 describe UsersController do
-  let!(:user) { FactoryGirl.create(:user) }
+  let!(:user) { create(:user) }
 
   describe "DELETE destroy" do
     context "Signed in as super-user" do

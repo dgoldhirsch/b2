@@ -16,7 +16,10 @@ RSpec.configure do |config|
   # See http://railsapps.github.io/tutorial-rails-devise-rspec-cucumber.html
   config.include(EmailSpec::Helpers)
   config.include(EmailSpec::Matchers)
-  
+
+  # FactoryGirl 3, for implicit 'create' and 'build'
+  config.include FactoryGirl::Syntax::Methods
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
