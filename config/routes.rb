@@ -35,7 +35,6 @@ B2::Application.routes.draw do
 
   resources :users
   resources :customers
-  
   root to: 'customers#index' # server:3000 => customers
   
   # Sample resource route with more complex sub-resources

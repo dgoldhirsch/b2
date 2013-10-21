@@ -1,10 +1,9 @@
 module B2UserSteps
-  step "a user with a customer" do
-    @customer = create(:customer)
-    @user = @customer.user
+  step "a user" do
+    @user = create(:user)
   end
 
-  step "I am signed in as the user" do
+  step "I sign in" do
     @user ||= create(:user)
     visit new_user_session_path
     fill_in "user_email", with: @user.email
