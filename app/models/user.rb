@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   has_many :customers
+  has_many :invoices, through: :customers
 
   def authorized_customers
     if superuser?

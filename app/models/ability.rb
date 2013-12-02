@@ -9,6 +9,7 @@ class Ability
       can :manage, :all
     else
       can :manage, Customer, user_id: user.id
+      can :manage, Invoice, user_id: user.id
     end
   end
 end
