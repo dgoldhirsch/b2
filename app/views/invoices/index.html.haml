@@ -1,0 +1,25 @@
+- body_class("customer_invoices_index_page")
+
+%h1 Invoices
+
+%table
+  %tr
+    %th Name
+    %th Service Date
+    %th Issue Date
+    %th
+    %th
+    %th
+
+  - @invoices.each do |invoice|
+    %tr
+      %td= invoice.name
+      %td= invoice.service_date
+      %td= invoice.issue_date
+      %td= link_to 'Show', customer_invoice_path(@customer, invoice)
+      %td= link_to 'Edit', edit_customer_invoice_path(@customer, invoice)
+      %td= link_to 'Destroy', customer_invoice_path(@customer, invoice), method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New invoice', new_customer_invoice_path(@customer)

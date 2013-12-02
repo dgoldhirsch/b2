@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     else
       can :manage, Customer, user_id: user.id
-      can :manage, Invoice, user_id: user.id
+      can :manage, Invoice, customer: { user_id: user.id } # https://github.com/ryanb/cancan/wiki/Nested-Resources
     end
   end
 end

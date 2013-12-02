@@ -1,0 +1,7 @@
+%h1 Editing invoice
+
+= render 'form'
+
+= link_to 'Show', customer_invoice_path(@customer, @invoice)
+\|
+= link_to 'Back', customer_invoices_path(@customer)

@@ -5,82 +5,88 @@ describe UsersController do
   let!(:user) { create(:user) }
 
   describe "DELETE destroy" do
-    context "Signed in as super-user" do
+    context "given I'm signed in as the super-user" do
       before { sign_in(user) }
-      let!(:response) { delete :destroy, id: user.id }
-      it { expects(response).to redirect_to(users_path) }
+
+      describe "when I DELETE myself" do
+        let!(:html) { delete :destroy, id: user.id }
+        it { expects(html).to redirect_to(users_path) } # Hey, wait a minute, maybe this shouldn't be allowed???
+      end
     end
 
-    context "Not signed in" do
-      let!(:response) { delete :destroy, id: user.id }
+    context "given that I'm not signed in" do
+      before { delete :destroy, id: user.id }
       it_behaves_like "redirects to sign in"
     end
   end
 
   describe "GET edit" do
-    context "Signed in as super-user" do
+    context "given that I'm signed in as an ordinary user" do
       before { sign_in(user) }
-      let!(:response) { get :edit, id: user.id }
 
-      it { expects(response).to be_success }
+      describe "when I EDIT myself" do
+        let!(:html) { get :edit, id: user.id }
+        it { expects(html).to be_success }
+        it { expects(html).to render_template("edit") }
 
-      it "finds the right user" do
-        expect(assigns(:user)).to eq(user)
-      end
-
-      it "renders view" do
-        expect(response).to render_template("edit")
+        it "finds the right user" do
+          expect(assigns(:user)).to eq(user)
+        end
       end
     end
 
-    context "Not signed in" do
-      let!(:response) { get :edit, id: user.id }
-      it_behaves_like "redirects to sign in"
+    context "given that I'm not signed in" do
+      describe "when I EDIT myself" do
+        before { get :edit, id: user.id }
+        it_behaves_like "redirects to sign in"
+      end
     end
   end
 
   describe "GET index" do
-    context "Signed in as super-user" do
+    context "given that I'm signed in as the super-user" do
       before { sign_in(user) }
-      let!(:response) { get :index }
 
-      it { expects(response).to be_success }
+      describe "when I GET the INDEX of users" do
+        let!(:html) { get :index }
 
-      it "finds the right users" do
-        expect(assigns(:users).to_set).to eq(Set[user])
-      end
+        it { expects(html).to be_success }
+        it { expects(html).to render_template("index") }
 
-      it "renders view" do
-        expect(response).to render_template("index")
+        it "finds the right users" do
+          expect(assigns(:users).to_set).to eq(Set[user])
+        end
       end
     end
 
-    context "Not signed in" do
-      let!(:response) { get :index }
-      it_behaves_like "redirects to sign in"
+    context "given that I'm not signed in" do
+      describe "when I GET the INDEX of users" do
+        before { get :index }
+        it_behaves_like "redirects to sign in"
+      end
     end
-
   end
 
   describe "GET show" do
-    context "Signed in as super-user" do
+    context "given that I'm signed in as the super-user" do
       before { sign_in(user) }
-      let!(:response) { get :show, id: user.id }
 
-      it { expects(response).to be_success }
+      describe "when I SHOW myself" do
+        let!(:html) { get :show, id: user.id }
+        it { expects(html).to be_success }
+        it { expects(html).to render_template("show") }
 
-      it "finds the right user" do
-        expect(assigns(:user)).to eq(user)
-      end
-
-      it "renders view" do
-        expect(response).to render_template("show")
+        it "finds the right user" do
+          expect(assigns(:user)).to eq(user)
+        end
       end
     end
 
-    context "Not signed in" do
-      let!(:response) { get :show, id: user.id }
-      it_behaves_like "redirects to sign in"
+    context "given that I'm not signed in" do
+      describe "when I SHOW myself" do
+        before { get :show, id: user.id }
+        it_behaves_like "redirects to sign in"
+      end
     end
   end
 end
