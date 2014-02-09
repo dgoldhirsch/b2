@@ -16,6 +16,9 @@ gem 'redcarpet' #https://github.com/vmg/redcarpet
 gem 'protected_attributes' # hold-over from Rails 3
 
 group :development, :test do
+  gem 'simplecov', :require => false
+  gem 'debase' # RubyMine debugging
+  gem 'ruby-debug-ide' # RubyMind debugging
   gem 'faker'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
@@ -58,4 +61,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'debugger'
+gem 'byebug' # byebug for 2.0, debugger for 1.9
